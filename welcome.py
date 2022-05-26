@@ -1,7 +1,7 @@
 # module for greetings
 # greets user as per the time
 
-import speak
+from speaker import speak
 import datetime
 
 
@@ -13,5 +13,5 @@ def greetings():
         speak("Good afternoon master...")
     else:
         speak("Good evening master...")
-    speak("My good name is Aarambh and I am responsible for automating your day to day tasks.")
+    speak("My good name is Infinix and I am responsible for automating your day to day tasks.")
     speak("I hope you'll find me useful.")
