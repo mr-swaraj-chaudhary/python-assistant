@@ -26,6 +26,3 @@ def hear():
             print(f"What I heard : {command}")
             speak(f"What I heard : {command}")
     return command
-
-
-hear()
