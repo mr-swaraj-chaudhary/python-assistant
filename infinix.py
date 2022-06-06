@@ -6,6 +6,7 @@ import wikipedia
 import webbrowser
 import os
 import random
+import smtplib
 
 if __name__ == "__main__":
     greetings()
@@ -55,6 +56,32 @@ if __name__ == "__main__":
         elif "open code" in command:
             vsCodePath = "C:\\Users\\blushingHappy\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(vsCodePath)
+        elif "send email" in command:
+            sender = "b190040@nitsikkim.ac.in"
+            receiver = "nehabharti1729@gmail.com"
+            try:
+                print("Enter your gmail password :", end=" ")
+                speak("Enter your gmail password")
+                password = input()
+
+                server = smtplib.SMTP("smtp.gmail.com", 587)
+                server.starttls()
+                server.login(sender, password)
+
+                # message = """From: From Person %s
+                # To: To Person %s
+                # Subject: Sending SMTP e-mail
+                # This is a test e-mail message.
+                # """ % (sender, receiver)
+
+                server.sendmail(sender, receiver, "Hii")
+                print("Successfully sent email")
+                speak("Successfully sent email")
+            except Exception as e:
+                print(e)
+                speak("unable to send email")
+                print("unable to send email")
+
         elif "exit" in command or "shut down" in command or "power off" in command:
             print("Shutting down...")
             speak("Shutting down...")
