@@ -9,7 +9,7 @@ import random
 import smtplib
 
 if __name__ == "__main__":
-    greetings()
+    # greetings()
     while True:
         command = hear().lower()
         if "wikipedia" in command:
@@ -59,22 +59,19 @@ if __name__ == "__main__":
         elif "send email" in command:
             sender = "b190040@nitsikkim.ac.in"
             receiver = "nehabharti1729@gmail.com"
+            password = "12345678"   # don't worry, I have update it.
             try:
-                print("Enter your gmail password :", end=" ")
-                speak("Enter your gmail password")
-                password = input()
-
                 server = smtplib.SMTP("smtp.gmail.com", 587)
                 server.starttls()
                 server.login(sender, password)
 
-                # message = """From: From Person %s
-                # To: To Person %s
-                # Subject: Sending SMTP e-mail
-                # This is a test e-mail message.
-                # """ % (sender, receiver)
+                message = f"""From: From Person {sender}
+                To: To Person {receiver}
+                Subject: Sending SMTP e-mail
+                This is a test e-mail message.
+                """
 
-                server.sendmail(sender, receiver, "Hii")
+                server.sendmail(sender, receiver, message)
                 print("Successfully sent email")
                 speak("Successfully sent email")
             except Exception as e:
